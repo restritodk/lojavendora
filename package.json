@@ -1,0 +1,41 @@
+{
+  "name": "vendora",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "dev:next": "next dev -H localhost -p 4100",
+    "build": "next build",
+    "start": "next start -H localhost -p 4100",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1053.0",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "@types/pdfkit": "^0.17.6",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "next": "16.2.6",
+    "pdfkit": "^0.18.0",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0",
+    "qrcode": "^1.5.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

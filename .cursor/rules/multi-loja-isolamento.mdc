@@ -1,0 +1,19 @@
+---
+description: Isolamento multi-loja obrigatório para painel e site público
+alwaysApply: true
+---
+
+# Isolamento Multi-Loja
+
+Todo recurso do painel e do site público deve ser isolado por loja/cliente. Cada lojista tem seu próprio painel administrativo e seu próprio site público, com dados, arquivos, integrações e configurações independentes.
+
+- Sempre derive a loja atual pelo usuário autenticado no painel ou pelo `slug` da URL pública.
+- Toda query de criação, leitura, edição ou exclusão de dados da loja deve filtrar por `storeId`.
+- Nunca use IDs globais sozinhos para alterar dados de produtos, categorias, clientes, pedidos, páginas, configurações ou integrações.
+- Configurações, credenciais, APIs, apps e efeitos no site devem refletir apenas na loja dona daquele `storeId`.
+- Em rotas públicas, resolva `Store` por `subdomain` e use `store.id` nas próximas consultas.
+- Em telas do painel, derive a loja com o usuário autenticado e valide permissões da loja antes de acessar ou modificar dados.
+- Em arquivos e imagens de lojistas, sempre salve usando Cloudflare R2 quando configurado. Use chaves/prefixos com `storeId`, como `stores/{storeId}/...`, para impedir mistura de arquivos entre lojas.
+- Nunca use arquivo, logo, imagem, banner, comprovante ou anexo global para uma funcionalidade da loja. O caminho/URL salvo deve pertencer à loja atual e ser persistido em dados filtrados por `storeId`.
+- Se houver fallback local de desenvolvimento, ele deve manter a mesma separação por `storeId` e não substituir o fluxo de produção no R2.
+- Ao exibir ou exportar documentos, PDFs, relatórios, pedidos ou páginas públicas, carregue sempre a logo, imagens e dados da loja dona do `storeId` atual.
